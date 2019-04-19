@@ -18,7 +18,8 @@ module.exports = {
       network_id: "1"
     },
     shasta: {
-      privateKey: process.env.PRIVATE_KEY_SHASTA,
+      // from: 'TS9MTtGe6z1csY7z33V2Mi3i8441YfouKe',
+      privateKey: '8e0145af26cee3a398f7fa5cf9cdcba0656df85da6060b3887272227d35dfe0f',
       userFeePercentage: 30,
       feeLimit: 1e8,
       fullHost: "https://api.shasta.trongrid.io",
@@ -31,6 +32,14 @@ module.exports = {
       feeLimit: 1e8,
       fullHost: 'http://127.0.0.1:' + port,
       network_id: "9"
-    }
+    },
+    production: {
+        privateKey: '8e0145af26cee3a398f7fa5cf9cdcba0656df85da6060b3887272227d35dfe0f',
+        consume_user_resource_percent: 30,
+        fee_limit: 100000000,
+        fullNode: "https://api.shasta.trongrid.io",
+        solidityNode: "https://api.shasta.trongrid.io",
+        network_id: "322"
+    },
   }
 }
