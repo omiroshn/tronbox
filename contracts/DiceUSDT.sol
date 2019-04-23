@@ -3,7 +3,7 @@ pragma solidity 0.4.25;
 import "./Portal.sol";
 
 
-interface DiceTokenInterface {
+interface DiceUSDTInterface {
     function initGame(bytes32 hashServerSeed) external returns (uint gameId);
     function startGame(
         bytes32 clienSeed,
@@ -28,7 +28,7 @@ interface DiceTokenInterface {
 }
 
 
-contract DiceToken is DiceTokenInterface, Roles {
+contract DiceUSDT is DiceUSDTInterface, Roles {
     using SafeMath for uint;
 
     enum GameStatus { init, start, finish }
@@ -136,10 +136,10 @@ contract DiceToken is DiceTokenInterface, Roles {
         uint8 result = getResultNumber(games[id].clienSeed, games[id].serverSeed, games[id].rollUnder);
         uint multiplier = uint(rtp).mul(96).div(games[id].number);
 
-        emit FinishGame(games[id].result, id);
         games[id].status = GameStatus.finish;
         games[id].serverSeed = serverSeed;
         games[id].result = result;
+        emit FinishGame(games[id].result, id);
 
         if (( games[id].rollUnder && games[id].number <= result) ||
             (!games[id].rollUnder && games[id].number >= result)) {
@@ -148,7 +148,7 @@ contract DiceToken is DiceTokenInterface, Roles {
             emit PlayerWin(games[id].userWallet, reward);
             games[id].reward = reward;
         } else {
-            portal.calculateReward(games[id].userWallet, games[id].userBet);
+            portal.payReward(games[id].userWallet, games[id].userBet, false);
         }
 
         return true;

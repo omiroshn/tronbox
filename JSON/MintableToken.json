@@ -1,0 +1,619 @@
+[
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "games",
+        "outputs": [
+            {
+                "name": "hashServerSeed",
+                "type": "bytes32"
+            },
+            {
+                "name": "serverSeed",
+                "type": "bytes32"
+            },
+            {
+                "name": "clienSeed",
+                "type": "bytes32"
+            },
+            {
+                "name": "userWallet",
+                "type": "address"
+            },
+            {
+                "name": "userBet",
+                "type": "uint256"
+            },
+            {
+                "name": "number",
+                "type": "uint8"
+            },
+            {
+                "name": "rollUnder",
+                "type": "bool"
+            },
+            {
+                "name": "result",
+                "type": "uint8"
+            },
+            {
+                "name": "status",
+                "type": "uint8"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getBalance",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "newSaleAgnet",
+                "type": "address"
+            }
+        ],
+        "name": "setSaleAgent",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "maxBet",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "portalContract",
+                "type": "address"
+            }
+        ],
+        "name": "updatePortalAddress",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "newDiceTRXContract",
+                "type": "address"
+            }
+        ],
+        "name": "setDiceTRXContract",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "clienSeed",
+                "type": "bytes32"
+            },
+            {
+                "name": "number",
+                "type": "uint8"
+            },
+            {
+                "name": "rollUnder",
+                "type": "bool"
+            },
+            {
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "startGame",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "portal",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "diceTRXContract",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "acceptOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "serverSeed",
+                "type": "bytes32"
+            },
+            {
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "finishGame",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "mainStatus",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_rtp",
+                "type": "uint24"
+            },
+            {
+                "name": "_rtpDivider",
+                "type": "uint16"
+            }
+        ],
+        "name": "changeRTP",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "minBet",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "saleAgent",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "newOwner",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "hashServerSeed",
+                "type": "bytes32"
+            }
+        ],
+        "name": "initGame",
+        "outputs": [
+            {
+                "name": "gameId",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_minBet",
+                "type": "uint256"
+            },
+            {
+                "name": "_maxBet",
+                "type": "uint256"
+            }
+        ],
+        "name": "changeMinMaxBet",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "status",
+                "type": "bool"
+            }
+        ],
+        "name": "setMainStatus",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "rtp",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint24"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "rtpDivider",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint16"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "portalContract",
+                "type": "address"
+            },
+            {
+                "name": "_rtp",
+                "type": "uint24"
+            },
+            {
+                "name": "_rtpDivider",
+                "type": "uint16"
+            },
+            {
+                "name": "_minBet",
+                "type": "uint256"
+            },
+            {
+                "name": "_maxBet",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "fallback"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "_from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "name": "_to",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "newDiceTRXContract",
+                "type": "address"
+            }
+        ],
+        "name": "ChangeDiceTRXContract",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "newSaleAgnet",
+                "type": "address"
+            }
+        ],
+        "name": "ChangeSaleAgent",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "mainStatus",
+                "type": "bool"
+            }
+        ],
+        "name": "ChangeMainStatus",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "InitGame",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "player",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "betAmount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "bet",
+                "type": "uint8"
+            },
+            {
+                "indexed": false,
+                "name": "rollUnder",
+                "type": "bool"
+            },
+            {
+                "indexed": false,
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "StartGame",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "result",
+                "type": "uint8"
+            },
+            {
+                "indexed": false,
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "FinishGame",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "player",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "PlayerWin",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "rtp",
+                "type": "uint24"
+            },
+            {
+                "indexed": false,
+                "name": "rtpDivider",
+                "type": "uint16"
+            }
+        ],
+        "name": "ChangeRTP",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "minBet",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "maxBet",
+                "type": "uint256"
+            }
+        ],
+        "name": "ChangeMinMaxBet",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "DepoositContract",
+        "type": "event"
+    }
+]

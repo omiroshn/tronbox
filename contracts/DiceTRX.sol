@@ -126,10 +126,10 @@ contract DiceTRX is DiceTRXInterface, Roles {
         uint8 result = getResultNumber(games[id].clienSeed, games[id].serverSeed, games[id].rollUnder);
         uint multiplier = uint(rtp).mul(96).div(games[id].number);
 
-        emit FinishGame(games[id].result, id);
         games[id].status = GameStatus.finish;
         games[id].serverSeed = serverSeed;
         games[id].result = result;
+        emit FinishGame(games[id].result, id);
 
         if (( games[id].rollUnder && games[id].number <= result) ||
             (!games[id].rollUnder && games[id].number >= result)) {
@@ -138,7 +138,7 @@ contract DiceTRX is DiceTRXInterface, Roles {
             emit PlayerWin(games[id].userWallet, reward);
             games[id].userWallet.transfer(reward);
         } else {
-            portal.calculateReward(games[id].userWallet, games[id].userBet);
+            portal.payReward(games[id].userWallet, games[id].userBet, true);
             owner.transfer(games[id].userBet);
         }
 

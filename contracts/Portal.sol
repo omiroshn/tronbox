@@ -5,7 +5,7 @@ import "./DiceTRX.sol";
 
 
 interface PortalInterface {
-    function calculateReward(address to, uint256 amount) external returns(bool success);
+    function payReward(address to, uint256 amount, bool isTRXreward) external returns(bool success);
     function depositOf(address owner) external view returns (uint256);
     function updateTokenAddress(address tokenContract) external returns (bool success);
 
@@ -35,30 +35,8 @@ contract Portal is PortalInterface, Roles {
         _;
     }
 
-    function calculateReward(address to, uint256 amount) external isActive onlyGameContract mintingRewardActive returns (bool) {
-        uint step;
-        uint stepReward;
-        uint periodReward;
-
-        if (rewardSupply < 8000000 * (10**18)) {
-            step         =        10 * (10**18);
-            stepReward   =         1 * (10**18);
-            periodReward =   8000000 * (10**18);
-        } else if (rewardSupply < 32000000 * (10**18)) {
-            step         =       500 * (10**18);
-            stepReward   =         5 * (10**18);
-            periodReward =  32000000 * (10**18);
-        } else if (rewardSupply < 128000000 * (10**18)) {
-            step         =       500 * (10**18);
-            stepReward   =        25 * (10**17);
-            periodReward = 128000000 * (10**18);
-        } else {
-            step         =       500 * (10**18);
-            stepReward   =       125 * (10**16);
-            periodReward =    MAX_REWARD_SUPPLY;
-        }
-
-        uint256 reward = (amount.add(depositOf(to).mod(step))).div(step).mul(stepReward);
+    function payReward(address to, uint256 amount, bool isTRXreward) external isActive onlyGameContract mintingRewardActive returns (bool) {
+        (uint256 reward, uint periodReward) = calculateRewardParams(to, amount, isTRXreward);
         uint256 maxReward = periodReward.sub(rewardSupply);
 
         if (reward > maxReward) {
@@ -68,6 +46,33 @@ contract Portal is PortalInterface, Roles {
         deposits[to] = deposits[to].add(amount);
         mintReward(to, amount);
         return true;
+    }
+
+    function calculateRewardParams(address to, uint256 amount, bool isTRXreward) private view returns (uint256 reward, uint periodReward) {
+        uint step;
+        uint stepReward;
+
+        if (isTRXreward) {
+            step = 50 * (10**18);
+        } else {
+            step =  1 * (10**18);
+        }
+
+        if (rewardSupply < 8000000 * (10**18)) {
+            stepReward   =        10 * (10**18);
+            periodReward =   8000000 * (10**18);
+        } else if (rewardSupply < 32000000 * (10**18)) {
+            stepReward   =         5 * (10**18);
+            periodReward =  32000000 * (10**18);
+        } else if (rewardSupply < 128000000 * (10**18)) {
+            stepReward   =        25 * (10**17);
+            periodReward = 128000000 * (10**18);
+        } else {
+            stepReward   =       125 * (10**16);
+            periodReward =    MAX_REWARD_SUPPLY;
+        }
+
+        reward = (amount.add(depositOf(to).mod(step))).div(step).mul(stepReward);
     }
 
     function depositOf(address owner) public view returns (uint256) {

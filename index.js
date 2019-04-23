@@ -21,18 +21,18 @@ const tronWeb = new TronWeb(
     ownerPrivateKey
 );
 
-const diceTRXHex = "413a5a566a8480bf24dfe3f6eedacaac818bd2bf6e"
-const portalHex  = "41ca574310303779f905be01e8d263f513c0e7b5df"
-const SCGHex     = "41cb34e1317e096f52837e5146bbeb6c817ddde510"
+const SCGHex     = "410de5bd6ccd3cdcbac757267ef727e45b2b70a6ec"
+const portalHex  = "41bcfc186860b12ce7cad31f9ddc3ea8d1d047c333"
+const diceTRXHex = "414216660071ffca514df488370aac040a375030e8"
 
-var DiceTRX_JSON = require('./JSON/DiceTRX.json');
-var Portal_JSON  = require('./JSON/Portal.json');
 var SCG_JSON     = require('./JSON/SCG.json');
+var Portal_JSON  = require('./JSON/Portal.json');
+var DiceTRX_JSON = require('./JSON/DiceTRX.json');
 
-const contractDiceTRX = {
-    "DiceTRX.sol:DiceTRX": {
-        "address": diceTRXHex,
-        "abi": DiceTRX_JSON
+const contractSCG = {
+    "SCG.sol:SCG": {
+        "address": SCGHex,
+        "abi": SCG_JSON
     }
 };
 const contractPortal = {
@@ -41,10 +41,10 @@ const contractPortal = {
         "abi": Portal_JSON
     }
 };
-const contractSCG = {
-    "SCG.sol:SCG": {
-        "address": SCGHex,
-        "abi": SCG_JSON
+const contractDiceTRX = {
+    "DiceTRX.sol:DiceTRX": {
+        "address": diceTRXHex,
+        "abi": DiceTRX_JSON
     }
 };
 
@@ -61,7 +61,9 @@ async function start() {
     //     console.error(error);  
     // });
 
-    // Portal.setMainStatus(portalHex).send({
+    // const bool = "true"
+
+    // Portal.setMainStatus(bool).send({
     //     shouldPollResponse: true,
     //     callValue: 0
     // }).catch(error => {
@@ -88,7 +90,7 @@ async function start() {
 
     const clientSeed = "0x9932dd2d28263008a0e50a54d95c47b713977a2db276e1f314423af38fc774e1"
     const number = "5"
-    const rollUnder = "false"
+    const rollUnder = "true"
     const id = "1"
 
     // DiceTRX.startGame(clientSeed, number, rollUnder, id).send({
@@ -111,7 +113,7 @@ async function start() {
     //     console.error(error);
     // });
 
-    // tronWeb.trx.sendTransaction("TFHkQwzvFdrM8cfm3b9EmVpbtgt2wniaM8", 100, userPrivateKey);
+    // tronWeb.trx.sendTransaction("TFzeRzRyeTgCAxmjCtPmezfWEkHD1uvdbp", 100, userPrivateKey);
 
     // DiceTRX.getBalance().call({
     //     shouldPollResponse: true,
@@ -122,17 +124,75 @@ async function start() {
     //     console.error(error);  
     // });
 
-    // const rtp = "100";
-    // const rtpDiv = "200";
+    const rtp = "100";
+    const rtpDiv = "200";
 
     // DiceTRX.changeRTP(rtp, rtpDiv).send({
     //     shouldPollResponse: true,
     //     callValue: 0
-    // }).then(gameId => {
-    //     console.log(`Resp: ${ gameId }`);
+    // }).then(ret => {
+    //     console.log(`Bet changed: ${ret}`);
     // }).catch(error => {
     //     console.error(error);  
     // });
+
+    // const minBet = "2";
+    // const maxBet = "11";
+
+    // DiceTRX.changeMinMaxBet(minBet, maxBet).send({
+    //     shouldPollResponse: true,
+    //     callValue: 0
+    // }).then(ret => {
+    //     console.log(`Bet changed: ${ret}`);
+    // }).catch(error => {
+    //     console.error(error);  
+    // });
+
+    // const bool = "true"
+
+    // DiceTRX.setMainStatus(bool).send({
+    //     shouldPollResponse: true,
+    //     callValue: 0
+    // }).catch(error => {
+    //     console.error(error);  
+    // });
+
+    const saleAgentAddr = "0x0dcd2f752394c41875e259e00bb44fd505297caf"
+
+    // DiceTRX.setSaleAgent(saleAgentAddr).send({
+    //     shouldPollResponse: true,
+    //     callValue: 0
+    // }).catch(error => {
+    //     console.error(error);  
+    // });
+
+    const saleDiceTRXContract = "0x0dcd2f752394c41875e259e00bb44fd505297caf"
+
+    // DiceTRX.setDiceTRXContract(saleAgentAddr).send({
+    //     shouldPollResponse: true,
+    //     callValue: 0
+    // }).catch(error => {
+    //     console.error(error);  
+    // });
+
+    const newOwnerAddr = "0xca35b7d915458ef540ade6068dfe2f44e8fa733c"
+
+    // DiceTRX.transferOwnership(newOwnerAddr).send({
+    //     shouldPollResponse: true,
+    //     callValue: 0
+    // }).catch(error => {
+    //     console.error(error);  
+    // });
+
+    const newPortalAddress = "41bcfc186860b12ce7cad31f9ddc3ea8d1d047c333"
+
+    DiceTRX.updatePortalAddress(newOwnerAddr).send({
+        shouldPollResponse: true,
+        callValue: 0
+    }).catch(error => {
+        console.error(error);  
+    });
+
 }
 
 start()
